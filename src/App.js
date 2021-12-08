@@ -7,8 +7,8 @@
 // Import the state hook
 import React, { useState } from 'react';
 import dummyData from '../src/dummy-data'
-import Post from './components/Posts/Post';
-import SearchBar from '.components/SearchBar/SearchBar'
+import Posts from './components/Posts/Post';
+import SearchBar from './components/SearchBar/SearchBar';
 // Import the Posts (plural!) and SearchBar components, since they are used inside App component
 // Import the dummyData
 import './App.css';
@@ -31,15 +31,14 @@ const App = () => {
         - if the `id` of the post matches `postId`, return a new post object with the desired values (use the spread operator).
         - otherwise just return the post object unchanged.
      */
-        const newPosts = posts.map(pst => {
-          return pst.id === postId ? { ...pst, likes: pst.likes + 1} : pst 
-        }) 
-        setPosts(newPosts)
+        setPosts(posts.map(item => item.id === postId ? {...item, likes: item.likes + 1} : item ))
   };
 
   return (
     <div className='App'>
       {/* Add SearchBar and Posts here to render them */}
+      <SearchBar/>
+      <Posts posts={posts} likePost={likePost}/>
       {/* Check the implementation of each component, to see what props they require, if any! */}
     </div>
   );

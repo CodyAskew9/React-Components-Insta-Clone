@@ -21,12 +21,9 @@ const Post = props => {
         />
       </div>
       {/* Is LikeSection getting all the props it needs to work correctly? */}
-      {posts.map(post =>{
-        return <Post post={post} likePost={likePost} key= {post.id} />
-})
-<LikeSection numberOfLikes={post.likes} likePost={() => likePost(post.id)} />
+      <LikeSection id={post.id} likePost={likePost} numberOfLikes={post.likes} />
       {/* Comments also wants its props! */}
-      <Comments comments= {post.comments}/>
+      <Comments />
     </div>
   );
 };
